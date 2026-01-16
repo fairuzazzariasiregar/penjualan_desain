@@ -69,4 +69,17 @@ class OrderController extends Controller
         return redirect()->route('orders.index')
             ->with('success', 'Pesanan berhasil dihapus');
     }
+
+        public function resi($id)
+    {
+        $order = Order::findOrFail($id);
+        return view('orders.resi', compact('order'));
+    }
+
+        public function laporan()
+    {
+        $orders = Order::all();
+        $total = $orders->count();
+        return view('orders.laporan', compact('orders','total'));
+    }
 }

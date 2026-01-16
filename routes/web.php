@@ -23,5 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('services', ServiceController::class);
 
     Route::resource('orders', OrderController::class);
+
+    Route::get('/orders/{id}/resi', [OrderController::class, 'resi'])->name('orders.resi');
+
+    Route::get('/laporan', [OrderController::class, 'laporan'])->name('orders.laporan');
 });
 

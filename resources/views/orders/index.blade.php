@@ -19,10 +19,14 @@
 
         <div style="display:flex; gap:10px;">
 
-            <a href="{{ route('orders.create') }}" class="btn">
-                Pesan Jasa
-            </a>
-        </div>
+        <a href="{{ route('orders.laporan') }}" class="btn">
+            Laporan
+        </a>
+
+        <a href="{{ route('orders.create') }}" class="btn">
+            Pesan Jasa
+        </a>
+    </div>
     </div>
 
     {{-- TABLE --}}
@@ -66,9 +70,36 @@
                         @endif
                     </td>
 
-                    <td>
-                        <div class="aksi">
-                            <a href="{{ route('orders.edit', $order->id) }}" class="btn-edit">
+                    <td style="text-align:center; width:220px;">
+                        <div style="
+                            display:flex;
+                            justify-content:center;
+                            align-items:center;
+                            gap:5px;
+                            flex-wrap:nowrap;
+                        ">
+
+                            <a href="{{ route('orders.resi', $order->id) }}"
+                            style="
+                                    background:#2563eb;
+                                    color:white;
+                                    padding:6px 14px;
+                                    border-radius:999px;
+                                    text-decoration:none;
+                                    font-size:13px;
+                            ">
+                                Resi
+                            </a>
+
+                            <a href="{{ route('orders.edit', $order->id) }}"
+                            style="
+                                    background:#2563eb;
+                                    color:white;
+                                    padding:6px 14px;
+                                    border-radius:999px;
+                                    text-decoration:none;
+                                    font-size:13px;
+                            ">
                                 Edit
                             </a>
 
@@ -76,14 +107,25 @@
                                 action="{{ route('orders.destroy', $order->id) }}"
                                 method="POST"
                                 onsubmit="return confirm('Yakin hapus pesanan ini?')"
+                                style="margin:0;"
                             >
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="btn-delete">
+                                <button type="submit"
+                                    style="
+                                        background:#ef4444;
+                                        color:white;
+                                        padding:6px 14px;
+                                        border:none;
+                                        border-radius:999px;
+                                        font-size:13px;
+                                        cursor:pointer;
+                                    ">
                                     Hapus
                                 </button>
                             </form>
+
                         </div>
                     </td>
                 </tr>

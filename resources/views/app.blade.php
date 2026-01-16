@@ -10,111 +10,121 @@
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: #f1f5f9;
+            background:
+                linear-gradient(135deg,
+                    #e0f2fe 0%,
+                    #93c5fd 25%,
+                    #bfdbfe 50%,
+                    #60a5fa 75%,
+                    #1d4ed8 100%
+                );
             color: #334155;
         }
 
-        /* ===== Layout ===== */
         .app-container {
             display: flex;
             min-height: 100vh;
         }
 
-        /* ===== Sidebar ===== */
-.sidebar {
-    width: 250px;
-    background: linear-gradient(180deg, #1e3a8a, #2563eb); /* BIRU */
-    color: white;
-    padding: 20px;
-    transition: 0.3s;
-}
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 20px;
+            transition: 0.3s;
+        }
 
-.sidebar.collapsed {
-    width: 80px;
-}
+        .sidebar.collapsed {
+            width: 80px;
+        }
 
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
 
-.brand {
-    font-size: 20px;
-    font-weight: 600;
-}
+        .brand {
+            font-size: 20px;
+            font-weight: 600;
+        }
 
-.toggle-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-.menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.menu li {
-    margin-bottom: 10px;
-}
+        .menu li {
+            margin-bottom: 10px;
+        }
 
-.menu a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    text-decoration: none;
-    color: #e0e7ff; /* font lebih terang */
-    border-radius: 10px;
-    font-weight: 500;
-    transition: .2s;
-}
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            text-decoration: none;
+            color: #e0e7ff;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: .2s;
+        }
 
-.menu a:hover {
-    background: rgba(255,255,255,.2);
-    color: white;
-}
+        .menu a:hover {
+            background: rgba(255,255,255,.2);
+            color: white;
+        }
 
-/* ===== Sidebar Collapsed Fix ===== */
-.sidebar.collapsed .brand {
-    display: none;
-}
+        .sidebar.collapsed .brand {
+            display: none;
+        }
 
-.sidebar.collapsed .menu a span {
-    display: none;
-}
+        .sidebar.collapsed .menu a span {
+            display: none;
+        }
 
-.sidebar.collapsed .menu a {
-    justify-content: center;
-    padding: 12px 0;
-}
+        .sidebar.collapsed .menu a {
+            justify-content: center;
+            padding: 12px 0;
+        }
 
-.sidebar.collapsed .btn {
-    padding: 10px;
-    font-size: 0;
-}
+        .sidebar.collapsed .btn {
+            padding: 10px;
+            font-size: 0;
+        }
 
-.sidebar.collapsed .btn::after {
-    content: "⏻";
-    font-size: 16px;
-}
-
-        /* ===== Main Content ===== */
+        .sidebar.collapsed .btn::after {
+            content: "⏻";
+            font-size: 16px;
+        }
+        
         .main-content {
             flex: 1;
             padding: 25px 30px;
-            background: #f1f5f9;
-}
+            background:
+                linear-gradient(135deg,
+                    #e0f2fe 0%,
+                    #93c5fd 25%,
+                    #bfdbfe 50%,
+                    #60a5fa 75%,
+                    #1d4ed8 100%
+                );
+        }
 
         .content-wrapper {
             max-width: 1100px;
             margin: 0 auto;
-}
+        }
 
         .topbar {
             background: linear-gradient(90deg, #1e3a8a, #2563eb);
@@ -133,7 +143,6 @@
             margin: 0;
         }
 
-        /* ===== Button ===== */
         .btn {
             background: #2563eb;
             color: white;
@@ -150,7 +159,6 @@
 
         .btn:hover { background: #1e40af; }
 
-        /* ===== Card ===== */
         .card {
             background: white;
             padding: 26px;
@@ -162,63 +170,63 @@
             overflow-x: auto;
 }
 
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 25px;
+        }
 
-        /* ===== Stats ===== */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 25px;
-}
+        .stat-card {
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            transition: 0.2s;
+        }
 
-.stat-card {
-    background: #ffffff;
-    color: #1e293b;
-    border-radius: 14px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    transition: 0.2s;
-}
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
 
-.stat-card:hover {
-    transform: translateY(-3px);
-}
+        .stat-card h6 {
+            font-size: 12px;
+            color: #64748b;
+            margin: 0;
+        }
 
-.stat-card h6 {
-    font-size: 12px;
-    color: #64748b;
-    margin: 0;
-}
+        .stat-card h2 {
+            font-size: 22px;
+            margin: 4px 0;
+            color: #0f172a;
+        }
 
-.stat-card h2 {
-    font-size: 22px;
-    margin: 4px 0;
-    color: #0f172a;
-}
+        .stat-card span {
+            font-size: 12px;
+            color: #94a3b8;
+        }
 
-.stat-card span {
-    font-size: 12px;
-    color: #94a3b8;
-}
-
-.icon {
-    font-size: 26px;
-    background: #e0e7ff;
-    color: #1e40af;
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-}
+        .icon {
+            font-size: 26px;
+            background: #e0e7ff;
+            color: #1e40af;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .blue { background: linear-gradient(135deg, #2563eb, #1e40af); }
         .purple { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
         .green { background: linear-gradient(135deg, #16a34a, #166534); }
         .orange { background: linear-gradient(135deg, #f97316, #c2410c); }
 
-        /* ===== Table ===== */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -255,6 +263,11 @@
         .aksi {
             display: flex;
             gap: 8px;
+            align-items: center;
+        }
+
+        .aksi form {
+            margin: 0;
         }
 
         .btn-edit {
@@ -283,48 +296,81 @@
         .btn-delete:hover {
             background: #b91c1c;
         }
+
+        table {
+            table-layout: fixed;
+        }
+
+        th:nth-child(1), td:nth-child(1) { width: 50px; text-align: center; }
+        th:nth-child(2), td:nth-child(2) { width: 90px; }
+        th:nth-child(3), td:nth-child(3) { width: 150px; }
+        th:nth-child(5), td:nth-child(5) { width: 120px; text-align: center; }
+        th:nth-child(6), td:nth-child(6) { width: 140px; text-align: center; }
+
+        td {
+            vertical-align: top;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        td img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        td strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 15px;
+            color: #0f172a;
+        }
+
+        td:nth-child(4) {
+            color: #475569;
+            text-align: justify;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="app-container">
-
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <div class="brand">Admin Panel</div>
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-    </div>
-
-    @auth
-    <ul class="menu">
-        <li><a href="{{ route('dashboard') }}">📊 <span>Dashboard</span></a></li>
-        <li><a href="{{ route('services.index') }}">🛠 <span>Services</span></a></li>
-        <li><a href="{{ route('orders.index') }}">🛒 <span>Orders</span></a></li>
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="btn" style="width:100%; justify-content:center;">Logout</button>
-            </form>
-        </li>
-    </ul>
-    @endauth
-</aside>
-
-        <main class="main-content">
-        <div class="content-wrapper">
-
-            <div class="topbar">
-                <h1>@yield('header')</h1>
-            </div>
-
-            @yield('content')
-
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">Admin Desain</div>
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
         </div>
-    </main>
 
-</div>
+        @auth
+        <ul class="menu">
+            <li><a href="{{ route('dashboard') }}"> <span>Dashboard</span></a></li>
+            <li><a href="{{ route('services.index') }}"> <span>Services</span></a></li>
+            <li><a href="{{ route('orders.index') }}"> <span>Orders</span></a></li>
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="btn" style="width:100%; justify-content:center;">Logout</button>
+                </form>
+            </li>
+        </ul>
+        @endauth
+    </aside>
 
+            <main class="main-content">
+            <div class="content-wrapper">
+
+                <div class="topbar">
+                    <h1>@yield('header')</h1>
+                </div>
+
+                @yield('content')
+
+            </div>
+        </main>
+
+    </div>
 <script>
 function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('collapsed');
