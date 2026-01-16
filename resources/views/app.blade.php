@@ -14,13 +14,30 @@
             color: #334155;
         }
 
-        header {
-            background: linear-gradient(90deg, #1e3a8a, #2563eb);
+        /* ===== Layout ===== */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #0f172a, #1e293b);
             color: white;
-            padding: 18px 30px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+        }
+
+        .sidebar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 30px;
         }
 
         .brand {
@@ -28,40 +45,69 @@
             font-weight: 600;
         }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
         }
 
-        nav a {
-            color: white;
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu li {
+            margin-bottom: 10px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
             text-decoration: none;
+            color: #cbd5f5;
+            border-radius: 10px;
             font-weight: 500;
-            padding: 8px 14px;
-            border-radius: 8px;
             transition: .2s;
         }
 
-        nav a:hover {
-            background: rgba(255,255,255,.2);
+        .menu a:hover {
+            background: rgba(255,255,255,.15);
+            color: white;
         }
 
-        main {
-            padding: 40px 20px;
+        /* ===== Main Content ===== */
+        .main-content {
+            flex: 1;
+            padding: 25px 30px;
+        }
+
+        .topbar {
+            background: linear-gradient(90deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 14px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 22px rgba(0,0,0,.12);
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
+        .topbar h1 {
+            font-size: 20px;
+            margin: 0;
         }
 
+        /* ===== Button ===== */
         .btn {
             background: #2563eb;
             color: white;
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 8px;
             border: none;
             cursor: pointer;
@@ -74,6 +120,7 @@
 
         .btn:hover { background: #1e40af; }
 
+        /* ===== Card ===== */
         .card {
             background: white;
             padding: 26px;
@@ -82,6 +129,7 @@
             margin-bottom: 25px;
         }
 
+        /* ===== Stats ===== */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -136,6 +184,7 @@
         .green { background: linear-gradient(135deg, #16a34a, #166534); }
         .orange { background: linear-gradient(135deg, #f97316, #c2410c); }
 
+        /* ===== Table ===== */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -169,62 +218,81 @@
         .pending { background: #fef3c7; color: #92400e; }
         .proses { background: #dbeafe; color: #1e40af; }
 
-.aksi {
-    display: flex;
-    gap: 8px;
-}
+        .aksi {
+            display: flex;
+            gap: 8px;
+        }
 
-.btn-edit {
-    background: #2563eb;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-    text-decoration: none;
-}
+        .btn-edit {
+            background: #2563eb;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            text-decoration: none;
+        }
 
-.btn-edit:hover {
-    background: #1e40af;
-}
+        .btn-edit:hover {
+            background: #1e40af;
+        }
 
-.btn-delete {
-    background: #ef4444;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-    border: none;
-    cursor: pointer;
-}
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+        }
 
-.btn-delete:hover {
-    background: #b91c1c;
-}
+        .btn-delete:hover {
+            background: #b91c1c;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="brand">@yield('header')</div>
+<div class="app-container">
 
-    @auth
-    <nav>
-        <a href="{{ route('dashboard') }}">Dashboard</a>
-        <a href="{{ route('services.index') }}">Services</a>
-        <a href="{{ route('orders.index') }}">Orders</a>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button class="btn">Logout</button>
-        </form>
-    </nav>
-    @endauth
-</header>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">Admin Panel</div>
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        </div>
 
-<main>
-    <div class="container">
+        @auth
+        <ul class="menu">
+            <li><a href="{{ route('dashboard') }}">📊 Dashboard</a></li>
+            <li><a href="{{ route('services.index') }}">🛠 Services</a></li>
+            <li><a href="{{ route('orders.index') }}">🛒 Orders</a></li>
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="btn" style="width:100%; justify-content:center;">Logout</button>
+                </form>
+            </li>
+        </ul>
+        @endauth
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <div class="topbar">
+            <h1>@yield('header')</h1>
+        </div>
+
         @yield('content')
-    </div>
-</main>
+    </main>
+
+</div>
+
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('collapsed');
+}
+</script>
 
 </body>
 </html>
